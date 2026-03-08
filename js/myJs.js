@@ -11,7 +11,7 @@ const textConfig = {
   text9: "Mơ đi gà",
   text10: "Chúc bạn sớm đạt được nguyện vọng nhé :D",
   text11:
-    "Đùa thôi, chúc bạn luôn xinh đẹp học giỏi, đi chơi lễ vui vẻ nha !💕",
+    "Đùa thôi, chúc bạn luôn xinh đẹp học giỏi, cười nhiều lên nhé!💕",
   text12: "💕",
 };
 
@@ -157,7 +157,7 @@ $(document).ready(function () {
           text: textConfig.text11,
           confirmButtonColor: "#83d0c9",
           onClose: () => {
-            window.location = "https://anhchibi.com/wp-content/uploads/2025/01/co-cai-nit-me-me.jpg";
+            window.location = "img/anhny.jpg";
           },
         });
       }
