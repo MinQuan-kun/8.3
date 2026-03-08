@@ -110,3 +110,9 @@ header h4 {
 #floatingGif:hover {
   opacity: 1; /* Tăng độ rõ khi di chuột */
 }
+
+.final-title {
+    color: #ff4d94 !important; /* Bạn có thể thay mã màu khác tùy thích */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}

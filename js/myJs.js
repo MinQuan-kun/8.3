@@ -20,7 +20,7 @@ $(document).ready(function () {
 
   setTimeout(function () {
     firstQuestion();
-    
+
     $(".spinner").fadeOut();
     $("#preloader").delay(350).fadeOut("slow");
     $("body").delay(350).css({
@@ -38,7 +38,7 @@ $(document).ready(function () {
     $(".content").hide();
     Swal.fire({
       title: textConfig.text1,
-      html:`
+      html: `
       8/3 vui vẻ ღNgày hôm nay không bông hoa nào đẹp hơn bạn đâu <3 Chúc bạn ngày nào cũng luôn tươi tắn, xinh đẹp và tràn đầy năng lượng, mong những điều tốt đẹp nhất sẽ đến với bạn💖!
       `,
       imageUrl: "img/8-3.jpg",
@@ -48,7 +48,7 @@ $(document).ready(function () {
       imageAlt: "Custom image",
     }).then(function () {
       $(".content").show(200);
-      var audio = new Audio("sound/CuteSong.mp3");
+      var audio = new Audio("sound/Nhacnen.mp3");
       audio.play();
     });
   }
@@ -97,18 +97,19 @@ $(document).ready(function () {
   // Chuyển hóa từ nhập của người dùng
   function textGenerate() {
     var n = "";
-    var text = " " + textConfig.text9;
+    var text = " " + textConfig.text9; 
     var a = Array.from(text);
     var textVal = $("#txtReason").val() ? $("#txtReason").val() : "";
     var count = textVal.length;
+
+    if (count > text.length) {
+      $("#txtReason").val(text);
+      return;
+    }
+
     if (count > 0) {
-      for (let i = 1; i <= count; i++) {
+      for (let i = 0; i < count; i++) { // Bắt đầu từ 0 để khớp với index của mảng
         n = n + a[i];
-        if (i == text.length + 1) {
-          $("#txtReason").val("");
-          n = "";
-          break;
-        }
       }
     }
     $("#txtReason").val(n);
@@ -120,10 +121,10 @@ $(document).ready(function () {
     audio.play();
     Swal.fire({
       title: textConfig.text7,
-      customClass: 
-                {
-                  title: 'weird-title', // Lớp tùy chỉnh cho tiêu đề
-                },
+      customClass:
+      {
+        title: 'weird-title', // Lớp tùy chỉnh cho tiêu đề
+      },
       html: true,
       width: 900,
       padding: "3em",
@@ -147,18 +148,30 @@ $(document).ready(function () {
           width: 900,
           confirmButtonText: textConfig.text12,
           background: '#fff url("img/heheeee.png")',
-          backdrop:`
-                    rgba(0,0,123,0.4)
-                    url("img/Tim1.gif")
-                    left top
-                    no-repeat
-                  `,
+          backdrop: `
+                rgba(0,0,123,0.4)
+                url("img/Tim1.gif")
+                left top
+                no-repeat
+            `,
           title: textConfig.text10,
           text: textConfig.text11,
-          confirmButtonColor: "#83d0c9",
-          onClose: () => {
-            window.location = "img/anhny.jpg";
-          },
+          confirmButtonColor: "#ff5ebc",
+        }).then(() => {
+          // Thay vì chuyển hướng, ta hiện một thông báo chứa ảnh
+          Swal.fire({
+            title: 'Gửi tặng em!',
+            customClass: {
+              title: 'final-title' // Gán lớp CSS đã tạo ở Bước 1 vào đây
+            },
+            imageUrl: 'img/anhny.jpg', // Đường dẫn ảnh của bạn
+            imageWidth: 500,
+            imageHeight: 'auto',
+            imageAlt: 'Final Image',
+            background: '#fff',
+            confirmButtonText: '8/3 vv nghen!',
+            confirmButtonColor: "#83d0c9",
+          });
         });
       }
     });
